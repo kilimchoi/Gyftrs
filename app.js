@@ -44,7 +44,7 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/friends', friends.friend);
-app.get('/manual_search', rec.manual);
+app.get('/manual_search', rec.recommend);
 app.get('/likes/:id', like.likes);
 app.get('/gifts', give.gifts);
 app.get('/search', search.manual);

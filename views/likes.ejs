@@ -9,6 +9,11 @@
    					<form>
    					<div style="position:relative">
    						<ul style="position:absolute; margin-top: 100px; margin-left: 370px">
+   							<% for(var i = 0; i < 3; i++) {%>
+					        	<li style="list-style-type: none; padding: 0 5px 8px 5px;">
+					        		<span style="padding: 5px 0 0 20px, font-family:Verdana"><%= musics[i] %></span>
+					        	</li>
+					    	<% } %>
 					    </ul>
    						<div>
           					<img src="images/music.png" style="width: 600px; height: 450px; margin-left: 350px; margin-top: 20px; z-index:-1px" />
