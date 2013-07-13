@@ -2,12 +2,13 @@
 <html>
     <head><title>Friend's Birthdays</title></head>
     <body>
+        <h1>Choose a friend</h1>
     	<ul>
-    	<% for(var i = 0; i < friends.length; i++) {%>
-    		<%= friends.name %>
+    	<% for(var i = 0; i < uid.length; i++) {%>
+        <li><%= name[i] %></li>
+        <li><%= bday[i] %></li>
     	<% } %>
     	</ul>
-        <h1>Choose a friend</h1>
         <p>Content</p>
     </body>
 </html>

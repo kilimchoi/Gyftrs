@@ -3,5 +3,5 @@
  */
 
 exports.recommendations = function(req, res){
-    res.render('recommend');
+    res.render('manual_search');
 };

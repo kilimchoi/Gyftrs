@@ -12,7 +12,7 @@ importio.init({"auth": {
         function(data) {
             console.log("enters here");
             var jsonData = data;
-            var productCodeArr = new Array();
+            var productCodeArr = [];
             console.log(jsonData);
             for(var i = 0; i < jsonData.length; i++) {
               var url = data[i].data.url.split("/");
