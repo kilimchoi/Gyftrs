@@ -1,3 +1,3 @@
 exports.friend = function(req, res) {
-    res.render('friends');
+    res.render('friends', {friends: 'user.data'});
 };
