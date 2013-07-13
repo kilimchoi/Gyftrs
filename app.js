@@ -6,10 +6,16 @@
 var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
+  , friends = require('./routes/friends')
   , http = require('http')
   , path = require('path');
 
 var app = express();
+
+var passport = require('passport')
+  , FacebookStrategy = require('passport-facebook').Strategy;
+
+var graph = require('fbgraph');
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -29,6 +35,30 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/users', user.list);
+app.get('/friends', friends.friend);
+app.get('/auth/facebook', passport.authenticate('facebook', {scope:'friends_birthday, friends_likes, user_likes, user_birthday'}));
+
+app.get('/auth/facebook/callback',
+        passport.authenticate('facebook', { successRedirect: '/friends',
+                                            failureRedirect: '/' }));
+
+
+passport.use(new FacebookStrategy({
+        clientID: "683118408381112",
+        clientSecret: "19703eaa693ac5e9aced65e8ed09e6e5",
+        callbackURL: "http://localhost:3000/auth/facebook/callback"
+    },
+    function(accessToken, refreshtoken, profile, done) {
+        graph.setAccessToken(accessToken);
+        console.log(profile.id);
+        var query = "SELECT uid, name, birthday_date, music, movies, books FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1=" + profile.id + ") AND birthday_date >= '07/12' AND music != '' AND movies != '' AND books != '' ORDER BY birthday_date ASC LIMIT 10";
+        graph.fql(query, function(err, res) {
+            console.log(res);
+        });
+        done(null);
+    }
+));
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
