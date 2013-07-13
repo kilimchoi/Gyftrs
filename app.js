@@ -44,7 +44,7 @@ app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/friends', friends.friend);
 app.get('/manual_search', rec.manual);
-app.get('/likes*', like.likes);
+app.get('/likes/:id', like.likes);
 app.get('/gifts', give.gifts);
 app.get('/auth/facebook', passport.authenticate('facebook', {scope:['friends_birthday', 'friends_likes', 'user_likes', 'user_birthday']}));
 app.get('/auth/facebook/callback',
