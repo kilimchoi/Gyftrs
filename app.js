@@ -3,19 +3,19 @@
  * Module dependencies.
  */
 
-var express = require('express')
-  , routes = require('./routes')
-  , user = require('./routes/user')
-  , friends = require('./routes/friends')
-  , rec = require('./routes/recommend')
-  , give = require('./routes/gifts')
-  , http = require('http')
-  , path = require('path');
+var express = require('express'), 
+    routes = require('./routes'),
+    user = require('./routes/user'),
+    friends = require('./routes/friends'),
+    rec = require('./routes/recommend'),
+    give = require('./routes/gifts'),
+    http = require('http'),
+    path = require('path');
 
 var app = express();
 
-var passport = require('passport')
-  , FacebookStrategy = require('passport-facebook').Strategy;
+var passport = require('passport'),
+    FacebookStrategy = require('passport-facebook').Strategy;
 
 var graph = require('fbgraph');
 
@@ -79,6 +79,7 @@ passport.use(new FacebookStrategy({
         graph.fql(query, function(err, res) {
             user.data = res;
             console.log(user.name + " was found!");
+            console.log(user.data);
             done(null, user);
         });
     }
