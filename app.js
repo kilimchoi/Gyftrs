@@ -10,6 +10,7 @@ var express = require('express'),
     rec = require('./routes/recommend'),
     like = require('./routes/likes'),
     give = require('./routes/gifts'),
+    search = require('./routes/manual_search'),
     http = require('http'),
     path = require('path');
 
@@ -43,9 +44,10 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/friends', friends.friend);
-app.get('/manual_search', rec.manual);
+app.get('/manual_search', rec.recommend);
 app.get('/likes*', like.likes);
 app.get('/gifts', give.gifts);
+app.get('/search', search.manual)
 app.get('/auth/facebook', passport.authenticate('facebook', {scope:['friends_birthday', 'friends_likes', 'user_likes', 'user_birthday']}));
 app.get('/auth/facebook/callback',
         passport.authenticate('facebook', { successRedirect: '/friends',
