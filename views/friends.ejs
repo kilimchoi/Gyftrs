@@ -1,14 +1,29 @@
 <!doctype html>
 <html>
     <head><title>Friend's Birthdays</title></head>
-    <body>
-        <h1>Choose a friend</h1>
-    	<ul>
-    	<% for(var i = 0; i < uid.length; i++) {%>
-        <li><%= name[i] %></li>
-        <li><%= bday[i] %></li>
-    	<% } %>
-    	</ul>
-        <p>Content</p>
+    <body background="images/background.png">
+    	<img src="images/logo-large2.png" style="width:200px; height: 120px; margin-left: 360px;" />
+   		<table> 
+   			<tr>
+   				<td></td>
+   					<form>
+   					<div style="position:relative">
+   						<ul style="position:absolute; margin-top: 100px; margin-left: 370px">
+   							<% for(var i = 0; i < uid.length; i++) {%>
+					        	<li style="list-style-type: none; padding: 0 5px 8px 5px;">
+					        		<input name="checkbox_name" id="<%= i %>" type="checkbox" >
+					        		<span style="padding: 5px 0 0 20px"><%= name[i] %></span>
+					        		<span style="padding: 5px 0 0 20px"><%= bday[i] %></span>
+					        		<a href="/likes#id=<%= i%>" style="text-decoration:none;">Get a gift</a>
+					        	</li>
+					    	<% } %>
+					    </ul>
+   						<div>
+          					<img src="images/giftafriend.png" style="width: 600px; height: 450px; margin-left: 350px; margin-top: 20px; z-index:-1px" />
+          				</div>
+          			</div>
+          		</form>
+          	</tr>
+        </table>
     </body>
 </html>
