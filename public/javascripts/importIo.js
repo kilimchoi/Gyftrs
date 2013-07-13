@@ -4,11 +4,13 @@ importio.init({"auth": {
   }});
 
   $(document).ready(function() {
-    $('#searchButton').click(function() {
-      var query_object = {"requestId":"testquery","input":{"artist_name":$('#artistName').val()},"connectorGuids":["103c2bfd-8696-4ecc-a940-a326e3c39e35"]};
+    $('#search_button').click(function() {
+      console.log("enters here");
+      var query_object = {"requestId":"testquery","input":{"artist_name":$('#artist_name').val()},"connectorGuids":["103c2bfd-8696-4ecc-a940-a326e3c39e35"]};
       importio.query(
         query_object,
         function(data) {
+            console.log("enters here");
             var jsonData = data;
             var productCodeArr = new Array();
             console.log(jsonData);
@@ -18,11 +20,6 @@ importio.init({"auth": {
             }
             console.log("productCodeArr is: ", productCodeArr);
             var query_object2 = {"requestId":"testquery","input":{"fieldkeywords_1":productCodeArr[0],"fieldkeywords_3":productCodeArr[1],"fieldkeywords_2":productCodeArr[2]},"connectorGuids":["e9bf08fd-78c6-491f-a988-a5c0361a7a74"]};
-            importio.query(
-              query_object2,
-              function(data) {
-                console.log("second query data is: ",data);
-            })
         }
       );
     });

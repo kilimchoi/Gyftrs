@@ -9,6 +9,7 @@ var express = require('express')
   , friends = require('./routes/friends')
   , rec = require('./routes/recommend')
   , give = require('./routes/gifts')
+  , manual_search = require('./routes/manual_search')
   , http = require('http')
   , path = require('path');
 
@@ -78,12 +79,14 @@ passport.use(new FacebookStrategy({
         var query = "SELECT uid, name, birthday_date, music, movies, books FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1=" + profile.id + ") AND birthday_date >= '07/12' AND music != '' AND movies != '' AND books != '' ORDER BY birthday_date ASC LIMIT 10";
         graph.fql(query, function(err, res) {
             user.data = res;
+            console.log("user name is", user.data)
             console.log(user.name + " was found!");
             done(null, user);
         });
     }
 ));
 
+app.get('/manual_search', manual_search.manual);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
