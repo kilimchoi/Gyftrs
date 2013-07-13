@@ -7,10 +7,9 @@ var express = require('express'),
     routes = require('./routes'),
     user = require('./routes/user'),
     friends = require('./routes/friends'),
-    rec = require('./routes/manual'),
+    rec = require('./routes/recommend'),
     like = require('./routes/likes'),
     give = require('./routes/gifts'),
-    manual_search = require('./routes/manual_search'),
     http = require('http'),
     path = require('path');
 
@@ -44,8 +43,8 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/friends', friends.friend);
-app.get('/manual', rec.manual);
-app.get('/likes', like.likes);
+app.get('/manual_search', rec.manual);
+app.get('/likes*', like.likes);
 app.get('/gifts', give.gifts);
 app.get('/auth/facebook', passport.authenticate('facebook', {scope:['friends_birthday', 'friends_likes', 'user_likes', 'user_birthday']}));
 app.get('/auth/facebook/callback',
@@ -87,7 +86,6 @@ passport.use(new FacebookStrategy({
     }
 ));
 
-app.get('/manual_search', manual_search.manual);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
