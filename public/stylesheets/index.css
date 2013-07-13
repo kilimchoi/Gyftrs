@@ -19,12 +19,22 @@
   left: 117px;
 }
 
+.logo {
+  margin-top: 55px;
+  margin-left: 220px;
+}
+
+.logo img { 
+  width: 300px;
+  height: 200px;
+}
+
 div.div-2 {
-  width: 350px;
+  width: 20px;
   height: 220px;
   position: relative;
-  top: -390px;
-  left: 140px;
+  top: -197px;
+  left: 380px;
 }
 
 div select {

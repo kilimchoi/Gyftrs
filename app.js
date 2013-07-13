@@ -79,7 +79,7 @@ passport.use(new FacebookStrategy({
         var query = "SELECT uid, name, birthday_date, music, movies, books FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1=" + profile.id + ") AND birthday_date >= '07/12' AND music != '' AND movies != '' AND books != '' ORDER BY birthday_date ASC LIMIT 10";
         graph.fql(query, function(err, res) {
             user.data = res;
-            console.log("user name is", user.data)
+            console.log("user name is", user.data[2])
             console.log(user.name + " was found!");
             done(null, user);
         });
