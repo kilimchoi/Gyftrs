@@ -39,12 +39,10 @@
 
 /* CSS Document */
 body {
-  background-color:#dbe6ff;
   width: 100%;
 
 }
 #page-wrapper {
-  background-color: #dbe6ff;
   position: relative;
   width: 980px;
   /* centers the document */
@@ -78,8 +76,6 @@ body {
   font-size: 20px;
 }
 .dom-heading {
-  background-color: #dbe6ff;
-  color: #3b3b3b;
   font-family:"josefin sans";
   font-size: 18px;
   line-height: 31px;
@@ -95,7 +91,6 @@ body {
   left: 255px;
 }
 .table {
-  background-color: #dbe6ff;
   width: 439px;
   position: absolute;
   top: 192px;

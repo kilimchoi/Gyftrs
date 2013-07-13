@@ -3,7 +3,7 @@
  */
 
 exports.likes = function(req, res) {
-    var data = req.user.data.data;
+    /**var data = req.user.data.data;
     var numbers = req.params;
     console.log(numbers);
     console.log(numbers.length);
@@ -17,6 +17,6 @@ exports.likes = function(req, res) {
     }
     console.log(names);
     console.log(bdays);
-    console.log(uids);
-    res.render('likes', {name: names, bday: bdays, uid: uids});
+    console.log(uids);**/
+    res.render('likes');//, {name: names, bday: bdays, uid: uids});
 };
