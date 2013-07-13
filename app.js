@@ -3,20 +3,21 @@
  * Module dependencies.
  */
 
-var express = require('express')
-  , routes = require('./routes')
-  , user = require('./routes/user')
-  , friends = require('./routes/friends')
-  , rec = require('./routes/recommend')
-  , give = require('./routes/gifts')
-  , manual_search = require('./routes/manual_search')
-  , http = require('http')
-  , path = require('path');
+var express = require('express'),
+    routes = require('./routes'),
+    user = require('./routes/user'),
+    friends = require('./routes/friends'),
+    rec = require('./routes/manual'),
+    like = require('./routes/likes'),
+    give = require('./routes/gifts'),
+    manual_search = require('./routes/manual_search'),
+    http = require('http'),
+    path = require('path');
 
 var app = express();
 
-var passport = require('passport')
-  , FacebookStrategy = require('passport-facebook').Strategy;
+var passport = require('passport'),
+    FacebookStrategy = require('passport-facebook').Strategy;
 
 var graph = require('fbgraph');
 
@@ -43,7 +44,8 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/friends', friends.friend);
-app.get('/recommend', rec.recommendations);
+app.get('/manual', rec.manual);
+app.get('/likes', like.likes);
 app.get('/gifts', give.gifts);
 app.get('/auth/facebook', passport.authenticate('facebook', {scope:['friends_birthday', 'friends_likes', 'user_likes', 'user_birthday']}));
 app.get('/auth/facebook/callback',
@@ -79,7 +81,6 @@ passport.use(new FacebookStrategy({
         var query = "SELECT uid, name, birthday_date, music, movies, books FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1=" + profile.id + ") AND birthday_date >= '07/12' AND music != '' AND movies != '' AND books != '' ORDER BY birthday_date ASC LIMIT 10";
         graph.fql(query, function(err, res) {
             user.data = res;
-            console.log("user name is", user.data[2])
             console.log(user.name + " was found!");
             done(null, user);
         });
