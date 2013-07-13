@@ -1,0 +1,33 @@
+#page-wrapper {
+  position: relative;
+  width: 980px;
+  /* centers the document */
+  margin: 0 auto;
+  /*
+  hides anything drawn off canvas.
+  remove overflow and height to see things drawn off canvas.
+  */
+  overflow: hidden;
+  height: 1000px;
+}
+
+.page-header {
+  width: 700px;
+  height: 74px;
+  position: absolute;
+  top: 10px;
+  left: 117px;
+}
+
+div.div-2 {
+  width: 350px;
+  height: 220px;
+  position: relative;
+  top: -390px;
+  left: 140px;
+}
+
+div select {
+  margin: 0px;
+  width: 163px;
+}
