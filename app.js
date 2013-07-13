@@ -7,6 +7,8 @@ var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , friends = require('./routes/friends')
+  , rec = require('./routes/recommend')
+  , give = require('./routes/gifts')
   , http = require('http')
   , path = require('path');
 
@@ -25,6 +27,10 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
+app.use(express.cookieParser());
+app.use(express.session({secret: 'keyboard cat'}));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -36,11 +42,24 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/friends', friends.friend);
-app.get('/auth/facebook', passport.authenticate('facebook', {scope:'friends_birthday, friends_likes, user_likes, user_birthday'}));
-
+app.get('/recommend', rec.recommendations);
+app.get('/gifts', give.gifts);
+app.get('/auth/facebook', passport.authenticate('facebook', {scope:['friends_birthday', 'friends_likes', 'user_likes', 'user_birthday']}));
 app.get('/auth/facebook/callback',
         passport.authenticate('facebook', { successRedirect: '/friends',
-                                            failureRedirect: '/' }));
+                                            failureRedirect: '/login' }));
+app.get('/logout', function(req, res){
+     req.logout();
+     res.redirect('/');
+});
+
+passport.serializeUser(function(user, done) {
+    done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+    done(null, obj);
+});
 
 
 passport.use(new FacebookStrategy({
@@ -49,13 +68,19 @@ passport.use(new FacebookStrategy({
         callbackURL: "http://localhost:3000/auth/facebook/callback"
     },
     function(accessToken, refreshtoken, profile, done) {
-        graph.setAccessToken(accessToken);
         console.log(profile.id);
+        var user={ 
+            user_id: profile.id, 
+            facebook_key: accessToken,  
+            name: profile.displayName,
+        };
+        graph.setAccessToken(user.facebook_key);
         var query = "SELECT uid, name, birthday_date, music, movies, books FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1=" + profile.id + ") AND birthday_date >= '07/12' AND music != '' AND movies != '' AND books != '' ORDER BY birthday_date ASC LIMIT 10";
         graph.fql(query, function(err, res) {
-            console.log(res);
+            user.data = res;
+            console.log(user.name + " was found!");
+            done(null, user);
         });
-        done(null);
     }
 ));
 
