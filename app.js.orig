@@ -3,15 +3,23 @@
  * Module dependencies.
  */
 
+<<<<<<< HEAD
+var express = require('express'), 
+=======
 var express = require('express'),
+>>>>>>> importioScrapingBranch
     routes = require('./routes'),
     user = require('./routes/user'),
     friends = require('./routes/friends'),
     rec = require('./routes/recommend'),
+<<<<<<< HEAD
+    give = require('./routes/gifts'),
+=======
     like = require('./routes/likes'),
     give = require('./routes/gifts'),
     search = require('./routes/manual_search'),
     recommendations = require('./routes/recommendations'),
+>>>>>>> importioScrapingBranch
     http = require('http'),
     path = require('path');
 

@@ -1,33 +1,39 @@
-#page-wrapper {
-  position: relative;
-  width: 980px;
-  /* centers the document */
-  margin: 0 auto;
-  /*
-  hides anything drawn off canvas.
-  remove overflow and height to see things drawn off canvas.
-  */
-  overflow: hidden;
-  height: 1000px;
+#fb-button {
+  margin-left: -50px; 
+  margin-top: -70px
 }
 
-.page-header {
-  width: 700px;
-  height: 74px;
-  position: absolute;
-  top: 10px;
-  left: 117px;
+#gift-me-button {  
+  width: 295px; 
+  height: 87px; 
+  margin-top: -180px
 }
 
-div.div-2 {
-  width: 350px;
-  height: 220px;
-  position: relative;
-  top: -390px;
-  left: 140px;
+#app-description-text {  
+  font-family: DeliusSwashCaps-Regular; 
+  color: #C11B17;
+  margin-top: -50px; 
+  width: 93%
 }
 
-div select {
-  margin: 0px;
-  width: 163px;
+.navbar { 
+    max-width: 1170px; /* width of .container */
+    margin: 0 auto;
 }
+header{ 
+  width: 100%;
+  text-align: center; 
+}
+.center-div { 
+  text-align: center;
+}
+
+@media all and (max-width: 1250px) and (min-width: 300px) {  
+  #border-resize {  
+    width: 310px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+

@@ -2,6 +2,6 @@
  * GET gifts page
  */
 
-exports.recommendations = function(req, res){
-    res.render('recommend');
+exports.manual = function(req, res){
+    res.render('manual_search');
 };

@@ -1,0 +1,173 @@
+#fb-button {
+  margin-left: -50px; 
+  margin-top: -70px
+}
+
+#gift-me-button {  
+  width: 295px; 
+  height: 87px; 
+  margin-top: -180px
+}
+
+#app-description-text {  
+  font-family: DeliusSwashCaps-Regular; 
+  color: #C11B17;
+  margin-top: -50px; 
+  width: 93%
+}
+
+.navbar { 
+    max-width: 1170px; /* width of .container */
+    margin: 0 auto;
+}
+header{ 
+  width: 100%;
+  text-align: center; 
+}
+.center-div { 
+  text-align: center;
+}
+
+@media all and (max-width: 1250px) and (min-width: 300px) {  
+  #border-resize {  
+    width: 310px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media all and (max-width: 1250px) and (min-width: 300px) {  
+  #tabs-list {  
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+#centered-nav { 
+  float:left;
+  width:100%;
+  overflow:hidden;
+  position:relative;
+}
+
+#centered-nav ul { 
+  float:left;
+  list-style:none;
+  margin:0;
+  padding:0;
+  position:relative;
+  left:50%;
+  text-align:center;
+}
+
+#centered-nav ul li {  
+  display: block;
+  float: left;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  right: 50%;
+}
+
+#centered-nav ul li a {
+  display: block;
+  margin: 0 0 0 1px;
+  background: #dad3b8;
+  color: #000;
+  text-decoration: none;
+  line-height: 1.3em;
+  padding: 10px 20px; 
+  text-decoration: none;
+  
+  /* Default colors */ 
+  color: black;
+  -webkit-border-top-left-radius: 15px;
+  -webkit-border-top-right-radius: 15px;
+  -moz-border-radius-topleft: 15px;
+  -moz-border-radius-topright: 15px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px; 
+}
+
+#centered-nev ul li a:hover {
+  background: #369;
+  color: #fff;
+}
+
+#centered-nev ul li a.active,
+#centered-nev ul li a.active:hover {
+  color: #fff;
+  background: #000;
+  font-weight: bold;
+}
+
+#centered-nav .tabs .active {
+  /* Highest, active tab is on top */
+  z-index: 3;
+}
+
+#centered-nav .tabs .active a { 
+  /* Colors when tab is active */
+  background: #e8e4d4; 
+  color: black;
+  border-top: 1px solid #dad3b8;
+  border-right: 1px solid #dad3b8;
+  border-left: 1px solid #dad3b8;
+}
+
+#centered-nav .tabs li:before, #centered-nav .tabs li:after, 
+#centered-nav .tabs li a:before, #centered-nav .tabs li a:after {
+  /* All pseudo elements are 
+     abs. positioned and on bottom */
+  position: absolute;
+  bottom: 0;
+}
+
+#centered-nav .tabs .active:before, #centered-nav .tabs .active:after {
+  background: white; 
+  
+  /* Squares below circles */
+  z-index: 1;
+}
+/* Squares */
+#centered-nav .tabs li:before, #centered-nav .tabs li:after {
+  background: #ddc385;
+  width: 10px;
+  height: 10px;
+}
+#centered-nav .tabs li:before {
+  left: -10px;      
+}
+#centered-nav .tabs li:after { 
+  right: -10px;
+}
+/* Circles */
+#centered-nav .tabs li a:after, #centered-nav .tabs li a:before {
+  width: 20px; 
+  height: 20px;
+  /* Circles are circular */
+  -webkit-border-radius: 10px;
+  -moz-border-radius:    10px;
+  border-radius:         10px;
+  background: #222;
+  
+  /* Circles over squares */
+  z-index: 2;
+}
+
+#centered-nav .tabs .active a:after, #centered-nav .tabs .active a:before {
+  background: #ddc385;
+}
+
+#centered-nav .tabs li:first-child.active a:before,
+#centered-nav .tabs li:last-child.active a:after {
+  background: #222;
+}
+
+#centered-nav .tabs li a:before {
+  left: -20px;
+}
+#centered-nav .tabs li a:after {
+  right: -20px;
+}

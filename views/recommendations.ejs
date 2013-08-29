@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+    <head>
+      <title>Friend's Birthdays</title>
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link type="text/css" rel="stylesheet" href="stylesheets/index.css" />
+       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+       <script type="text/javascript" language="javascript" charset="utf-8" src="stylesheets/bootstrap.min.js"></script>
+       <link rel="stylesheet" type="text/css" media="all" href="stylesheets/bootstrap.min.css">
+       <link rel="stylesheet" type="text/css" media="all" href="stylesheets/bootstrap-responsive.min.css">
+       <link rel="stylesheet" type="text/css" media="all" href="stylesheets/bootstrap-responsive.css">
+       <script src="//d7xe6yl2ckrgs.cloudfront.net/js/2/importio.js"></script>
+	   <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	   <script>
+	   importio.init({"auth": {
+	    "userGuid": "c4148a01-6fe5-48a2-996f-adce08b49a4f",
+	    "apiKey": "5hXx5nTME6kvxBSsUxRELMXgCc/IPupD0Nd1hbo2lqvLXEaDkXGbpcfJBLkARwz47fNa1AS924qBgTj22n4oxQ=="
+	  }});
+
+	  $(document).ready(function() {
+	    $('#search_button').click(function() {
+	      console.log("enters here1");
+
+	      var query_object = {"requestId":"testquery","input":{"artist_name":$('#artist_name').val()},"connectorGuids":["103c2bfd-8696-4ecc-a940-a326e3c39e35"]};
+	      importio.query(
+	        query_object,
+	        function(data) {
+	            console.log("enters here2");
+	            var jsonData = data;
+	            var productCodeArr = [];
+	            console.log(jsonData);
+	            for(var i = 0; i < jsonData.length; i++) {
+	              var url = data[i].data.url.split("/");
+	              productCodeArr[i] = url[5];
+	            }
+	            console.log("productCodeArr is: ", productCodeArr);
+	            var query_object2 = {"requestId":"testquery","input":{"fieldkeywords_1":productCodeArr[0],"fieldkeywords_3":productCodeArr[1],"fieldkeywords_2":productCodeArr[2]},"connectorGuids":["e9bf08fd-78c6-491f-a988-a5c0361a7a74"]};
+	            importio.query(
+	            	query_object2,
+	            	function(data2) { 
+	            		var jsonData = data2;
+			            var productCodeArrs = [];
+			            console.log("second query result is ", jsonData);
+			            for(var i = 0; i < data2.length; i++) {
+			              var image = data2[i].data.image; 
+			              console.log("data2 image is ", image);
+			              console.log("data2 is ", data2[i]);
+			              console.log("data2 title is ", data2[i].data.title);
+			              $('#imageDiv').append('<tr><td style="width=100px">' + 
+			              	data2[i].data.name + '</td>' + '<td>' + "<img src= " + 
+			              	image + " style=' float:right' >" + 
+			              	'</td>' + '<td>' + data2[i].data.price + '</td></tr>');
+			              console.log("enters thisline");
+				          $('#imageDiv').append("<br />");
+			              productCodeArrs[i] = url[5];
+			            }
+			            console.log("productCodeArrs are: ", productCodeArrs);
+	            	}
+	            );
+	        } 
+	      );
+	    });
+	  });
+
+	   </script>  
+    </head>
+    <body background="images/background.png">
+        <div class="container-fluid">
+        	<div class="span4"><img src="images/logo-large2.png" style="width: 80%; margin-left: 30px; margin-top: 20px" class="img-responsive" alt="Responsive image"/></div>
+        	<p style="font-family: Rochester-Regular; color: #57574B; font-size: 21px; margin-left: 15px">Here are your suggestions!</p>
+        	<form> 
+				<input type="text" id="artist_name"/>
+				<input type="text" id="artist_name2" />
+				<input type="text" id="artist_name3" />
+				<button id="search_button" type="button">Search</button>
+				<div id="imageDiv"></div>
+			</form>
+    </body>
+</html>
