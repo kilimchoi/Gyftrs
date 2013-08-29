@@ -9,6 +9,8 @@
     "express": "3.3.4",
     "ejs": "*",
     "passport-facebook": "1.0.0",
-    "passport": "0.1.17"
+    "passport": "0.1.17",
+    "fbgraph": "0.2.7"
+
   }
 }
