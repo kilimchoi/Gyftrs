@@ -8,6 +8,7 @@
   "dependencies": {
     "express": "3.3.4",
     "ejs": "*",
-    "passport-facebook": "1.0.0"
+    "passport-facebook": "1.0.0",
+    "passport": "0.1.17"
   }
 }
