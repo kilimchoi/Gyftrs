@@ -1,126 +1,39 @@
-#page-wrapper {
-  position: relative;
-  width: 980px;
-  /* centers the document */
-  margin: 0 auto;
-  /*
-  hides anything drawn off canvas.
-  remove overflow and height to see things drawn off canvas.
-  */
-  overflow: hidden;
-  height: 1000px;
+#fb-button {
+  margin-left: -50px; 
+  margin-top: -70px
 }
 
-#hero-container, #signup-form input, #signup-form button, #nav-bar.brand {
-  font-family: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial;
-}
-#signup-form {
-  padding: 20px 15px;
-  position: relative;
-  min-height: 28px;
-}
-#signup-form input {
-  position: absolute;
-  left: 15px;
-  right: 100px;
-  width: auto;
-}
-#signup-form button {
-  float: right;
+#gift-me-button {  
+  width: 295px; 
+  height: 87px; 
+  margin-top: -180px
 }
 
-.page-header {
-  width: 700px;
-  height: 74px;
-  position: absolute;
-  top: 10px;
-  left: 117px;
+#app-description-text {  
+  font-family: DeliusSwashCaps-Regular; 
+  color: #C11B17;
+  margin-top: -50px; 
+  width: 93%
 }
 
-/* CSS Document */
-body {
+.navbar { 
+    max-width: 1170px; /* width of .container */
+    margin: 0 auto;
+}
+header{ 
   width: 100%;
-
+  text-align: center; 
 }
-#page-wrapper {
-  position: relative;
-  width: 980px;
-  /* centers the document */
-  margin: 0 auto;
-  /*
-  hides anything drawn off canvas.
-  remove overflow and height to see things drawn off canvas.
-  */
-  overflow: hidden;
-  height: 1000px;
-}
-/* This makes absolutely positioned elements like p, h1,
-     and some bootstrap elements placed properly. */
- body>p, body>h1, body>h2, body>h3, body>h4, body>h5, body>h6 {
-  margin-top: 0 !important;
-}
-/* Set floating dom-heading margins to 0 */
-[class*="dom-heading"] {
-  margin: 0;
-}
-.table tbody tr td.td-1 {
-  font-family:"arial";
-  font-size: 15px;
-}
-.table tbody tr td.td-2 {
-  font-family:"arial";
-  font-size: 15px;
-}
-.table thead tr th.th-1 {
-  font-family:"arial";
-  font-size: 20px;
-}
-.dom-heading {
-  font-family:"josefin sans";
-  font-size: 18px;
-  line-height: 31px;
-  border-top: none;
-  border-right: none;
-  border-bottom: 1px solid #ffffff;
-  border-left: none;
+.center-div { 
   text-align: center;
-  width: 421px;
-  height: 38px;
-  position: absolute;
-  top: 95px;
-  left: 255px;
 }
-.table {
-  width: 439px;
-  position: absolute;
-  top: 192px;
-  left: 451px;
+
+@media all and (max-width: 1250px) and (min-width: 300px) {  
+  #border-resize {  
+    width: 310px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 
-.logo {
-  margin-top: 55px;
-  margin-left: 220px;
-}
-
-.logo img { 
-  width: 300px;
-  height: 200px;
-}
-
-.friends_form {
-  left: 300px;
-}
-
-div.div-2 {
-  width: 20px;
-  height: 220px;
-  position: relative;
-  top: -197px;
-  left: 380px;
-}
-
-div select {
-  margin: 0px;
-  width: 163px;
-}

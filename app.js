@@ -11,6 +11,7 @@ var express = require('express'),
     like = require('./routes/likes'),
     give = require('./routes/gifts'),
     search = require('./routes/manual_search'),
+    recommendations = require('./routes/recommendations'),
     http = require('http'),
     path = require('path');
 
@@ -48,6 +49,7 @@ app.get('/manual_search', rec.manual);
 app.get('/likes/:id', like.likes);
 app.get('/gifts', give.gifts);
 app.get('/search', search.manual);
+app.get('/recommendations', recommendations.gift_recommendations);
 app.get('/auth/facebook', passport.authenticate('facebook', {scope:['friends_birthday', 'friends_likes', 'user_likes', 'user_birthday']}));
 app.get('/auth/facebook/callback',
         passport.authenticate('facebook', { successRedirect: '/friends',
@@ -79,7 +81,7 @@ passport.use(new FacebookStrategy({
             name: profile.displayName,
         };
         graph.setAccessToken(user.facebook_key);
-        var query = "SELECT uid, name, birthday_date, music, movies, books FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1=" + profile.id + ") AND birthday_date >= '07/12' AND music != '' AND movies != '' AND books != '' ORDER BY birthday_date ASC LIMIT 10";
+        var query = "SELECT uid, name, birthday_date, music, movies, books, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1=" + profile.id + ") AND birthday_date >= '08/28' AND music != '' AND movies != '' AND books != '' ORDER BY birthday_date ASC LIMIT 10";
         graph.fql(query, function(err, res) {
             user.data = res;
             console.log(user.name + " was found!");
