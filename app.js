@@ -72,7 +72,7 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new FacebookStrategy({
         clientID: "683118408381112",
         clientSecret: "19703eaa693ac5e9aced65e8ed09e6e5",
-        callbackURL: "http://localhost:3000/auth/facebook/callback"
+        callbackURL: "https://gyftrs.herokuapp.com/auth/facebook/callback"
     },
     function(accessToken, refreshtoken, profile, done) {
         console.log(profile.id);
