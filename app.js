@@ -53,8 +53,8 @@ app.get('/recommendations', recommendations.gift_recommendations);
 app.get('/auth/facebook', passport.authenticate('facebook', {scope:['friends_birthday', 'friends_likes', 'user_likes', 'user_birthday']}));
 app.get('/auth/facebook/callback',
         passport.authenticate('facebook', { successRedirect: '/friends',
-                                            failureRedirect: '/login' },
-                                            {scope:['friends_birthday', 'friends_likes', 'user_likes', 'user_birthday']}));
+                                            failureRedirect: '/login' }
+                                            ));
 app.get('/logout', function(req, res){
      req.logout();
      res.redirect('/');
@@ -72,7 +72,7 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new FacebookStrategy({
         clientID: "683118408381112",
         clientSecret: "19703eaa693ac5e9aced65e8ed09e6e5",
-        callbackURL: "https://gyftrs.herokuapp.com/auth/facebook/callback"
+        callbackURL: "http://localhost:3000/auth/facebook/callback"
     },
     function(accessToken, refreshtoken, profile, done) {
         console.log(profile.id);
