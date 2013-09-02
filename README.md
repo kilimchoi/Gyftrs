@@ -8,6 +8,6 @@ It is responsive so you can view it on any devices.
 
 Technologies Used: Node.js, Express.js, Importio, Javascript+HTML+CSS
 
-Known Issues: Rarely, images/prices/titles do not appear. Also, recommendations do not work on the mobile web. 
+Known Issues: Rarely, images/prices/titles do not appear.
 
 Live Site at https://gyftrs.herokuapp.com/
